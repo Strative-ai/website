@@ -1,82 +1,109 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "title": "Sample API",
-    "version": "1.0.0",
-    "description": "This is a sample API description."
+  "openapi":"3.0.0",
+  "info":{
+    "title":"Example API",
+    "version":"1.0.0",
+    "description":"API for managing users and items."
   },
-  "servers": [
+  "servers":[
     {
-      "url": "https://api.example.com/v1"
+      "url":"https://api.example.com/v1"
     }
   ],
-  "paths": {
-    "/users": {
-      "get": {
-        "summary": "Get users",
-        "operationId": "getUsers",
-        "responses": {
-          "200": {
-            "description": "A list of users",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "integer"
-                      },
-                      "name": {
-                        "type": "string"
-                      }
-                    }
+  "paths":{
+    "/users":{
+      "get":{
+        "summary":"List all users",
+        "operationId":"listUsers",
+        "responses":{
+          "200":{
+            "description":"A list of users",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"array",
+                  "items":{
+                    "$ref":"#/components/schemas/User"
                   }
                 }
               }
             }
+          }
+        }
+      },
+      "post":{
+        "summary":"Create a new user",
+        "operationId":"createUser",
+        "requestBody":{
+          "required":true,
+          "content":{
+            "application/json":{
+              "schema":{
+                "$ref":"#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses":{
+          "201":{
+            "description":"User created successfully"
           }
         }
       }
     },
-    "/users/{id}": {
-      "get": {
-        "summary": "Get a user by ID",
-        "operationId": "getUserById",
-        "parameters": [
+    "/users/{id}":{
+      "get":{
+        "summary":"Get user by ID",
+        "operationId":"getUserById",
+        "parameters":[
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer"
+            "name":"id",
+            "in":"path",
+            "required":true,
+            "schema":{
+              "type":"integer"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "A user object",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "name": {
-                      "type": "string"
-                    }
-                  }
+        "responses":{
+          "200":{
+            "description":"User object",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/User"
                 }
               }
             }
           },
-          "404": {
-            "description": "User not found"
+          "404":{
+            "description":"User not found"
           }
         }
+      }
+    }
+  },
+  "components":{
+    "schemas":{
+      "User":{
+        "type":"object",
+        "properties":{
+          "id":{
+            "type":"integer"
+          },
+          "name":{
+            "type":"string"
+          },
+          "email":{
+            "type":"string",
+            "format":"email"
+          }
+        },
+        "required":[
+          "id",
+          "name",
+          "email"
+        ]
       }
     }
   }
