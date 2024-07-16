@@ -739,17 +739,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Recommendation"
-                  }
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -803,17 +793,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Insight"
-                  }
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -874,17 +854,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OptimizationEvent"
-                  }
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -907,17 +877,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/LogEntry"
-                  }
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -930,14 +890,7 @@
         "summary": "Get API usage data",
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UsageData"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -950,14 +903,7 @@
         "summary": "Get current API rate limits and quotas",
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LimitData"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -1197,8 +1143,7 @@
           },
           "message": {
             "type": "string"
-          },
-          "details": null
+          }
         }
       }
     }
